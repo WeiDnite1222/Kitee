@@ -49,15 +49,11 @@ jobs:
         run: |
           python build.py
 
-      - name: Compress Windows build
-        run: |
-          Compress-Archive -Path build\Kitee -DestinationPath Kitee-1.0-dev.Windows.zip
-
-      - name: Upload ZIP
+      - name: Upload EXE
         uses: actions/upload-artifact@v4
         with:
-          name: Kitee-1.0-dev.Windows
-          path: Kitee-1.0-dev.Windows.zip
+          name: Kitee-1.0-dev.Windows.x64
+          path: build/main.dist/
 
   macos-arm64e-build:
     runs-on: macos-latest
@@ -83,15 +79,11 @@ jobs:
         run: |
           python build.py
 
-      - name: Compress macOS ARM64 build
-        run: |
-          cd build && zip -r ../Kitee-1.0-dev.macOS.arm64e.zip Kitee
-
-      - name: Upload ZIP
+      - name: Upload APP
         uses: actions/upload-artifact@v4
         with:
           name: Kitee-1.0-dev.macOS.arm64e
-          path: Kitee-1.0-dev.macOS.arm64e.zip
+          path: build/main.dist/
 
   macos-x64-build:
     runs-on: macos-13
@@ -117,15 +109,11 @@ jobs:
         run: |
           python build.py
 
-      - name: Compress macOS x64 build
-        run: |
-          cd build && zip -r ../Kitee-1.0-dev.macOS.x64.zip Kitee
-
-      - name: Upload ZIP
+      - name: Upload APP
         uses: actions/upload-artifact@v4
         with:
           name: Kitee-1.0-dev.macOS.x64
-          path: Kitee-1.0-dev.macOS.x64.zip
+          path: build/main.dist/
 
   linux-build:
     runs-on: ubuntu-latest
@@ -156,15 +144,11 @@ jobs:
         run: |
           python build.py
 
-      - name: Compress Linux build
-        run: |
-          cd build && zip -r ../Kitee-1.0-dev.Linux.zip Kitee
-
-      - name: Upload ZIP
+      - name: Upload binary
         uses: actions/upload-artifact@v4
         with:
-          name: Kitee-1.0-dev.Linux
-          path: Kitee-1.0-dev.Linux.zip
+          name: Kitee-1.0-dev.Linux.x64
+          path: build/main.dist/
 
   create-latest-tag:
     runs-on: ubuntu-latest

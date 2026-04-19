@@ -74,11 +74,12 @@ class NuitkaBuildConfig:
             args.extend([
                 "--windows-console-mode=disable",
                 f"--windows-icon-from-ico={self.icon_file}",
+                "--assume-yes-for-downloads"
             ])
 
         if self.system == "Darwin":
             args.extend([
-                "-mode=app"
+                "--mode=app"
             ])
 
         # Onefile mode (creates single executable)
