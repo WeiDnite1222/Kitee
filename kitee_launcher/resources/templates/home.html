@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kitee</title>
+    <style>
+        /* BK_STYLE */
+    </style>
+</head>
+<body>
+    <section class="page-stage" aria-live="polite">
+        <main class="container active-container" id="home_container">
+            <div class="container-header">
+                <div>
+                    <h1>Kitee</h1>
+                </div>
+                <div class="status">
+                    <span class="dot"></span>
+                    <div style="display: flex; flex-direction: column;">
+                        <span>Launcher Version: <!-- BK_VERSION --></span>
+                        <span>BakeCore Version: <!-- BK_BK_CORE_VERSION --></span>
+                    </div>
+                </div>
+            </div>
+            <section class="instance-panel home-instance-panel" aria-label="Home instances">
+                <div class="instance-panel-header">
+                    <div class="instance-header-actions">
+                        <button class="instance-create-button" type="button" id="home_create_instance_button" onclick="window.pywebview?.api?.open_create_instance_window?.()">Create</button>
+                        <button class="instance-refresh-button" type="button" id="home_instances_refresh_button">Refresh</button>
+                    </div>
+                </div>
+                <div class="instance-grid home-instance-grid compact-instance-grid" id="home_instance_list"></div>
+            </section>
+        </main>
+        <main class="container hidden" id="instances_container">
+            <h1>Instances</h1>
+            <section class="instance-panel" aria-label="Instance list">
+                <div class="instance-panel-header">
+                    <div class="instance-header-actions">
+                        <button class="instance-create-button" type="button" id="instances_create_button" onclick="window.pywebview?.api?.open_create_instance_window?.()">Create</button>
+                        <button class="instance-refresh-button" type="button" id="instances_refresh_button">Refresh</button>
+                    </div>
+                </div>
+                <div class="instance-status" id="instance_status" aria-live="polite"></div>
+                <div class="instance-grid" id="instance_list"></div>
+            </section>
+        </main>
+        <main class="container hidden" id="accounts_container">
+            <h1>Accounts</h1>
+            <section class="account-panel" aria-label="Account manager">
+                <div class="account-panel-header">
+                </div>
+                <div class="account-list" id="account_list">
+                </div>
+                <div class="account-login-actions">
+                    <button class="account-login-button" type="button" id="account_login_button">Login</button>
+                    <button class="account-danger-button" type="button" id="account_clear_button">Clear AccountData</button>
+                    <button class="account-refresh-button" type="button" id="account_refresh_button">Refresh</button>
+                </div>
+            </section>
+        </main>
+        <main class="container hidden" id="settings_container">
+            <h1>Settings</h1>
+            <div class="settings-switcher" role="tablist" aria-label="Settings sections">
+                <button class="settings-switch-button active" type="button" data-settings-page="config">Config</button>
+                <button class="settings-switch-button" type="button" data-settings-page="jvm">JVM Settings</button>
+            </div>
+            <section class="settings-panel" aria-label="Frontend settings">
+                <div class="settings-panel-header">
+                <div>
+                    <h2 id="settings_panel_title">frontend.toml</h2>
+                </div>
+                    <div class="settings-actions">
+                        <span class="settings-save-status" id="settings_save_status" aria-live="polite"></span>
+                        <button class="settings-save-button" type="button" id="settings_save_button">Save</button>
+                        <button class="settings-refresh-button" type="button" id="settings_refresh_button">Refresh</button>
+                    </div>
+                </div>
+                <div class="settings-list" id="settings_list">
+                    <p class="settings-empty">Waiting for settings...</p>
+                </div>
+                <div class="settings-list hidden" id="jvm_settings_list">
+                    <p class="settings-empty">Waiting for JVM settings...</p>
+                </div>
+            </section>
+        </main>
+        <main class="container hidden" id="about_container">
+            <h1>About</h1>
+            <section class="about-panel" aria-label="About information">
+                <div class="about-content">
+                    <h3>Kitee</h3>
+                    <p>
+                        Original author: TedKai / @Techarerm
+                        <br>
+                        Project based on legacy version code.
+                    </p>
+                    <h3>Original Repository</h3>
+                    <p>
+                        KiteeLauncher: <a href="https://github.com/Techarerm/BakeLauncher" target="_blank" rel="noopener noreferrer">https://github.com/TedKai/BakeLauncher</a>
+                        <br>
+                        BakeCore: <a href="https://github.com/Techarerm/libs" target="_blank" rel="noopener noreferrer">https://github.com/Techarerm/libs</a>
+                    </p>
+                    <h3>Copyright</h3>
+                    <p>
+                        (c) 2024~2025 Techarerm (for the original BakeLauncher and BakeCore code)
+                        <br>
+                        (c) 2026 Kitee Contributors.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </section>
+    <div class="tab_bar_context_menu context-menu" id="tab_bar_context_menu" role="menu" hidden>
+        <button type="button" role="menuitem" data-action="hidden">Hidden</button>
+        <button type="button" role="menuitem" data-action="reset_sort">Reset sort</button>
+    </div>
+    <div class="instance-context-menu context-menu" id="instance_context_menu" role="menu" hidden>
+        <button type="button" role="menuitem" data-action="edit">Edit</button>
+        <button type="button" role="menuitem" data-action="icon">Icon</button>
+        <button type="button" role="menuitem" data-action="launch">Launch</button>
+        <button class="danger-menu-item" type="button" role="menuitem" data-action="delete">Delete</button>
+    </div>
+    <nav class="tab-bar" aria-label="Primary">
+        <button class="tab-action-button" type="button" id="tabbar_create_instance_button" aria-label="Create instance">
+            <svg class="tab-action-plus" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 5v14"></path>
+                <path d="M5 12h14"></path>
+            </svg>
+            <span>Create</span>
+        </button>
+        <button class="tab-button active" type="button" aria-current="page" data-target-container="home_container">
+            <span class="tab-icon tab-icon-home" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false" role="img">
+                    <path d="M3 10.8L12 3l9 7.8"></path>
+                    <path d="M5.5 9.5V21h13V9.5"></path>
+                    <path d="M9.5 21v-6h5v6"></path>
+                </svg>
+            </span>
+            <span>Home</span>
+        </button>
+        <button class="tab-button" type="button" data-target-container="instances_container">
+            <span class="tab-icon tab-icon-bookshelf" aria-hidden="true">
+                <span class="shelf shelf-top">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="shelf shelf-bottom">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </span>
+            <span>Instances</span>
+        </button>
+        <button class="tab-button" type="button" data-target-container="accounts_container">
+            <span class="tab-icon tab-icon-account" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false" role="img">
+                    <path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Z"></path>
+                    <path d="M4 21a8 8 0 0 1 16 0"></path>
+                </svg>
+            </span>
+            <span>Accounts</span>
+        </button>
+        <button class="tab-button" type="button" data-target-container="settings_container">
+            <span class="tab-icon tab-icon-settings" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false" role="img">
+                    <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"></path>
+                    <path d="M19.4 15a1.8 1.8 0 0 0 .36 1.98l.05.05a2.1 2.1 0 1 1-2.97 2.97l-.05-.05a1.8 1.8 0 0 0-1.98-.36 1.8 1.8 0 0 0-1.08 1.65v.16a2.1 2.1 0 1 1-4.2 0v-.08a1.8 1.8 0 0 0-1.18-1.69 1.8 1.8 0 0 0-1.98.36l-.05.05a2.1 2.1 0 1 1-2.97-2.97l.05-.05a1.8 1.8 0 0 0 .36-1.98 1.8 1.8 0 0 0-1.65-1.08H2.1a2.1 2.1 0 1 1 0-4.2h.08a1.8 1.8 0 0 0 1.69-1.18 1.8 1.8 0 0 0-.36-1.98l-.05-.05a2.1 2.1 0 1 1 2.97-2.97l.05.05a1.8 1.8 0 0 0 1.98.36h.08A1.8 1.8 0 0 0 9.6 2.76V2.6a2.1 2.1 0 1 1 4.2 0v.08a1.8 1.8 0 0 0 1.08 1.65 1.8 1.8 0 0 0 1.98-.36l.05-.05a2.1 2.1 0 1 1 2.97 2.97l-.05.05a1.8 1.8 0 0 0-.36 1.98v.08a1.8 1.8 0 0 0 1.65 1.08h.16a2.1 2.1 0 1 1 0 4.2h-.08A1.8 1.8 0 0 0 19.4 15Z"></path>
+                </svg>
+            </span>
+            <span>Settings</span>
+        </button>
+        <button class="tab-button" type="button" id="tabbar_about_button" aria-label="About" data-target-container="about_container">
+            <span class="tab-icon tab-icon-about" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false" role="img">
+                    <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z"></path>
+                    <path d="M12 10.5V16"></path>
+                    <path d="M12 7.5h.01"></path>
+                </svg>
+            </span>
+            <span>About</span>
+            </button>
+    </nav>
+    <script>
+    /* BK_I18N */
+    </script>
+    <script>
+    /* BK_SHARED_JS */
+    </script>
+    <script>
+    /* BK_HOME_JS */
+    </script>
+</body>
+</html>

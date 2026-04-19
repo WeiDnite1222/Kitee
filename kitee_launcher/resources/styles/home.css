@@ -1,0 +1,3289 @@
+:root {
+    color-scheme: light;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #ffffff;
+    color: #1e293b;
+}
+
+html {
+    height: 100%;
+    scrollbar-color: transparent transparent;
+}
+
+* {
+    scrollbar-color: transparent transparent;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: transparent;
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    border: 0;
+    background: transparent;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+
+body.bake-has-background {
+    background: #f8fafc;
+    isolation: isolate;
+}
+
+.bake-background-layer {
+    position: fixed;
+    inset: -160px;
+    z-index: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: var(--bake-background-media-opacity, 1);
+    pointer-events: none;
+    transform: scale(1.02);
+}
+
+.bake-background-video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+body.bake-has-background .page-stage {
+    z-index: 1;
+}
+
+body.bake-has-background .instance-window-shell {
+    position: relative;
+    z-index: 1;
+}
+
+body.bake-has-background .create-instance-window,
+body.bake-has-background .detached-container {
+    position: relative;
+    z-index: 1;
+}
+
+body.bake-has-background h1,
+body.bake-has-background h2,
+body.bake-has-background h3,
+body.bake-has-background p,
+body.bake-has-background strong,
+body.bake-has-background span,
+body.bake-has-background label,
+body.bake-has-background small {
+    color: rgba(15, 23, 42, 0.9);
+}
+
+body.bake-has-background h1,
+body.bake-has-background .container > p,
+body.bake-has-background .instance-widget-box > p {
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.82);
+}
+
+body.bake-has-background .status,
+body.bake-has-background .instance-card,
+body.bake-has-background .instance-context-menu,
+body.bake-has-background .create-instance-options,
+body.bake-has-background .create-instance-queue,
+body.bake-has-background .create-instance-task-item,
+body.bake-has-background .instance-window-sidebar,
+body.bake-has-background .instance-detail-item,
+body.bake-has-background .instance-classpath-item,
+body.bake-has-background .instance-mod-item,
+body.bake-has-background .instance-library-item,
+body.bake-has-background .log-context-menu,
+body.bake-has-background .account-item,
+body.bake-has-background .settings-section,
+body.bake-has-background .settings-group,
+body.bake-has-background .settings-switcher,
+body.bake-has-background .settings-checkbox-item,
+body.bake-has-background .settings-selected-item,
+body.bake-has-background .settings-selected-empty,
+body.bake-has-background .settings-tab-order-item > span,
+body.bake-has-background .jvm-item,
+body.bake-has-background .jvm-readonly-badge,
+body.bake-has-background .tab-bar {
+    border-color: rgba(148, 163, 184, 0.72);
+    background: rgba(248, 250, 252, var(--bake-background-surface-alpha, 0.6));
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.16);
+    backdrop-filter: blur(10px);
+}
+
+body.bake-has-background button,
+body.bake-has-background input,
+body.bake-has-background select,
+body.bake-has-background textarea,
+body.bake-has-background .tab-button,
+body.bake-has-background .tab-action-button,
+body.bake-has-background .settings-file-button,
+body.bake-has-background .settings-input {
+    border-color: rgba(100, 116, 139, 0.76);
+    background: rgba(255, 255, 255, var(--bake-background-surface-alpha, 0.6));
+    color: rgba(15, 23, 42, 0.92);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.44), 0 8px 22px rgba(15, 23, 42, 0.12);
+}
+
+body.bake-has-background button:hover,
+body.bake-has-background .tab-button:hover,
+body.bake-has-background .settings-file-button:hover {
+    background: rgba(255, 255, 255, 0.72);
+}
+
+body.bake-has-background .settings-list .settings-section,
+body.bake-has-background .settings-list .settings-group,
+body.bake-has-background .settings-list .settings-checkbox-item,
+body.bake-has-background .settings-list .settings-selected-item,
+body.bake-has-background .settings-list .settings-selected-empty,
+body.bake-has-background .settings-list .settings-tab-order-item > span,
+body.bake-has-background .settings-list button,
+body.bake-has-background .settings-list input,
+body.bake-has-background .settings-list select,
+body.bake-has-background .settings-list textarea {
+    box-shadow: none;
+}
+
+body.bake-has-background .tab-button.active,
+body.bake-has-background .settings-switch-button.active,
+body.bake-has-background .instance-window-tab.active {
+    border-color: rgba(15, 23, 42, 0.9);
+    background: rgba(15, 23, 42, 0.86);
+    color: rgba(255, 255, 255, 0.94);
+}
+
+body.bake-has-background .tab-button.active span,
+body.bake-has-background .settings-switch-button.active,
+body.bake-has-background .instance-window-tab.active {
+    color: rgba(255, 255, 255, 0.94);
+}
+
+body.bake-has-background .instance-launch-button,
+body.bake-has-background .instance-create-button,
+body.bake-has-background .account-login-button,
+body.bake-has-background .jvm-download-button,
+body.bake-has-background .tab-action-button {
+    border-color: rgba(22, 101, 52, 0.74);
+    background: rgba(220, 252, 231, 0.66);
+    color: rgba(20, 83, 45, 0.94);
+}
+
+body.bake-has-background .instance-log-output {
+    border-color: rgba(226, 232, 240, 0.72);
+    background: rgba(17, 24, 39, 0.9);
+    color: rgba(229, 231, 235, 0.94);
+}
+
+body.bake-has-background .bake-error-widget {
+    background: rgba(248, 250, 252, 0.9);
+}
+
+body.bake-has-background.bake-transparent-surfaces .status,
+body.bake-has-background.bake-transparent-surfaces .instance-card,
+body.bake-has-background.bake-transparent-surfaces .instance-context-menu,
+body.bake-has-background.bake-transparent-surfaces .create-instance-options,
+body.bake-has-background.bake-transparent-surfaces .create-instance-queue,
+body.bake-has-background.bake-transparent-surfaces .create-instance-task-item,
+body.bake-has-background.bake-transparent-surfaces .instance-window-sidebar,
+body.bake-has-background.bake-transparent-surfaces .instance-detail-item,
+body.bake-has-background.bake-transparent-surfaces .instance-classpath-item,
+body.bake-has-background.bake-transparent-surfaces .instance-mod-item,
+body.bake-has-background.bake-transparent-surfaces .instance-library-item,
+body.bake-has-background.bake-transparent-surfaces .log-context-menu,
+body.bake-has-background.bake-transparent-surfaces .account-item,
+body.bake-has-background.bake-transparent-surfaces .settings-section,
+body.bake-has-background.bake-transparent-surfaces .settings-group,
+body.bake-has-background.bake-transparent-surfaces .settings-switcher,
+body.bake-has-background.bake-transparent-surfaces .settings-checkbox-item,
+body.bake-has-background.bake-transparent-surfaces .settings-selected-item,
+body.bake-has-background.bake-transparent-surfaces .settings-selected-empty,
+body.bake-has-background.bake-transparent-surfaces .settings-tab-order-item > span,
+body.bake-has-background.bake-transparent-surfaces .jvm-item,
+body.bake-has-background.bake-transparent-surfaces .jvm-readonly-badge,
+body.bake-has-background.bake-transparent-surfaces .tab-bar {
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+.page-stage {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.container {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 32px 24px 96px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    opacity: 1;
+    transform: translateX(0);
+    backface-visibility: hidden;
+    transition: opacity 220ms ease, transform 220ms ease;
+    will-change: opacity, transform;
+    z-index: 0;
+}
+
+.container-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.container.active-container {
+    z-index: 1;
+}
+
+.container.hidden {
+    display: none;
+}
+
+.container.exiting-left {
+    opacity: 0;
+    transform: translateX(-72px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.container.entering-right {
+    opacity: 0;
+    transform: translateX(72px);
+    pointer-events: none;
+    z-index: 2;
+}
+
+h1 {
+    margin: 0 0 12px;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+p {
+    margin: 0 0 20px;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    font-size: 14px;
+    flex-direction: row;
+    margin-left: auto;
+    max-height: 50px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #22c55e;
+}
+
+/*ContentMenu*/
+
+.context-menu {
+    position: fixed;
+    z-index: 30;
+    min-width: 140px;
+    padding: 5px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 14px 36px rgba(15, 23, 42, 0.18);
+}
+
+.context-menu[hidden] {
+    display: none;
+}
+
+.context-menu button {
+    width: 100%;
+    height: 34px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: #1e293b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    text-align: left;
+}
+
+.context-menu button:hover {
+    background: #f1f5f9;
+}
+
+.context-menu .danger-menu-item {
+    color: #991b1b;
+}
+
+.context-menu .danger-menu-item:hover {
+    background: #fef2f2;
+}
+
+/* =================== Instances =================== */
+
+.instance-panel {
+    width: min(1060px, 100%);
+    margin-top: 24px;
+}
+
+.home-instance-panel {
+    margin-top: 20px;
+}
+
+.instance-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    /*margin-bottom: 14px;*/
+}
+
+.instance-panel-header h2 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    letter-spacing: 0;
+}
+
+.instance-panel-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #64748b;
+    overflow-wrap: anywhere;
+}
+
+.instance-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+}
+
+.instance-create-button,
+.instance-refresh-button,
+.instance-actions button {
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #1e293b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+}
+
+.instance-create-button {
+    border-color: #22c55e;
+    background: #dcfce7;
+    color: #166534;
+}
+
+.instance-create-button:hover {
+    background: #bbf7d0;
+}
+
+.instance-refresh-button:hover,
+.instance-actions button:hover {
+    background: #f1f5f9;
+}
+
+.instance-actions button:disabled {
+    cursor: not-allowed;
+    opacity: 0.56;
+}
+
+.instance-status {
+    min-height: 20px;
+    margin-bottom: 10px;
+    color: #475569;
+    font-size: 14px;
+}
+
+.home-instance-grid {
+    margin-top: 20px;
+}
+
+.instance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    max-height: calc(100vh - 260px);
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding-right: 4px;
+}
+
+.compact-instance-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    max-height: calc(100vh - 270px);
+}
+
+.instance-icon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(104px, 112px));
+    justify-content: start;
+    align-items: start;
+    gap: 20px 16px;
+}
+
+.compact-instance-grid.instance-icon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(96px, 104px));
+    gap: 18px 14px;
+}
+
+.instance-detail-grid-mode {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.instance-card {
+    display: grid;
+    align-content: start;
+    gap: 9px;
+    min-height: 150px;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.compact-instance-card {
+    min-height: 112px;
+}
+
+.instance-name-input {
+    width: 100%;
+    min-width: 0;
+    height: 34px;
+    box-sizing: border-box;
+    padding: 6px 8px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background: #f8fafc;
+    color: #0f172a;
+    font: inherit;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.instance-name-input:not(:disabled):focus {
+    outline: 2px solid #94a3b8;
+    outline-offset: 1px;
+    border-color: #cbd5e1;
+    background: #ffffff;
+}
+
+.instance-name-input:disabled {
+    color: #475569;
+}
+
+.instance-version,
+.instance-meta {
+    margin: 0;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+.instance-meta {
+    color: #64748b;
+}
+
+.instance-app-card {
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    gap: 8px;
+    width: 112px;
+    min-height: 128px;
+    box-sizing: border-box;
+    padding: 4px 4px 6px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: #0f172a;
+    cursor: default;
+}
+
+.compact-instance-app-card {
+    width: 104px;
+    min-height: 120px;
+}
+
+.instance-app-card:hover,
+.instance-app-card:focus-visible {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+    outline: none;
+}
+
+.instance-app-icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 76px;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 18px;
+    background: var(--instance-icon-bg, #22c55e);
+    box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.12), 0 10px 24px rgba(15, 23, 42, 0.16);
+}
+
+.compact-instance-app-card .instance-app-icon {
+    width: 70px;
+    border-radius: 17px;
+}
+
+.instance-app-card-error .instance-app-icon {
+    background: #ef4444;
+}
+
+.instance-app-icon-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.46), rgba(255, 255, 255, 0) 48%);
+}
+
+.instance-app-icon-glyph {
+    position: relative;
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1;
+    text-shadow: 0 2px 8px rgba(15, 23, 42, 0.32);
+}
+
+.instance-app-image-icon {
+    background: #e2e8f0;
+}
+
+.instance-app-image-icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.instance-app-name {
+    width: 100%;
+    margin: 0;
+    color: #1e293b;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.instance-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2px;
+}
+
+.instance-empty {
+    color: #64748b;
+    white-space: nowrap;
+}
+
+.create-instance-window-body {
+    height: 100vh;
+    min-height: 100vh;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    background: #f5f7fb;
+}
+
+.create-instance-window {
+    box-sizing: border-box;
+    min-height: 100%;
+    padding: 28px;
+}
+
+.create-instance-window h1 {
+    font-size: 32px;
+}
+
+.create-instance-form {
+    display: grid;
+    grid-template-columns: minmax(320px, 460px) minmax(280px, 380px);
+    grid-auto-rows: min-content;
+    gap: 13px 18px;
+    align-items: start;
+    width: min(900px, 100%);
+    margin-top: 22px;
+}
+
+.create-instance-form > label {
+    grid-column: 1;
+}
+
+.create-instance-form label {
+    display: grid;
+    gap: 6px;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.create-instance-form .create-instance-check {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.create-instance-options {
+    display: grid;
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    gap: 12px;
+    margin: 0;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.create-instance-options legend {
+    padding: 0 6px;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.create-instance-queue {
+    display: grid;
+    grid-column: 1 / -1;
+    gap: 10px;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.create-instance-queue-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.create-instance-queue-header h2 {
+    margin: 0 0 4px;
+    color: #0f172a;
+    font-size: 18px;
+}
+
+.create-instance-queue-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.create-instance-queue-header button,
+.create-instance-task-item button {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #1e293b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.create-instance-queue-header button:hover,
+.create-instance-task-item button:hover {
+    background: #f1f5f9;
+}
+
+.create-instance-queue-header button {
+    border-color: #38bdf8;
+    background: #e0f2fe;
+    color: #075985;
+}
+
+.create-instance-queue-header button:hover {
+    background: #bae6fd;
+}
+
+.create-instance-queue-header button:disabled {
+    cursor: not-allowed;
+    opacity: 0.56;
+}
+
+.create-instance-task-list {
+    display: grid;
+    gap: 8px;
+    max-height: 240px;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding-right: 4px;
+}
+
+.create-instance-task-empty {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 12px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.create-instance-task-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 9px 12px;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.create-instance-task-item.task-failed {
+    border-color: #fca5a5;
+    background: #fef2f2;
+}
+
+.create-instance-task-item.task-finished {
+    border-color: #86efac;
+    background: #f0fdf4;
+}
+
+.create-instance-task-summary {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+}
+
+.create-instance-task-summary strong,
+.create-instance-task-summary span,
+.create-instance-task-summary small {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.create-instance-task-summary strong {
+    color: #0f172a;
+    font-size: 14px;
+}
+
+.create-instance-task-summary span {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.create-instance-task-summary small {
+    color: #475569;
+    font-size: 12px;
+}
+
+.create-instance-task-progress {
+    --progress: 0%;
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 9px;
+    overflow: hidden;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background: #e2e8f0;
+}
+
+.create-instance-task-progress span {
+    display: block;
+    width: var(--progress);
+    height: 100%;
+    background: #38bdf8;
+    transition: width 180ms ease;
+}
+
+.create-instance-check input {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+}
+
+.create-instance-form input,
+.create-instance-form select {
+    width: 100%;
+    height: 38px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #0f172a;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.create-instance-form input:focus,
+.create-instance-form select:focus {
+    outline: 2px solid #94a3b8;
+    outline-offset: 1px;
+}
+
+.create-instance-status {
+    min-height: 20px;
+    color: #475569;
+    font-size: 14px;
+}
+
+.create-instance-progress-area {
+    display: grid;
+    grid-column: 1 / -1;
+    gap: 7px;
+}
+
+.create-instance-progress {
+    --progress: 0%;
+    width: 100%;
+    height: 16px;
+    overflow: hidden;
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    background: #e2e8f0;
+}
+
+.create-instance-progress span {
+    display: block;
+    width: var(--progress);
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(90deg, #ffefb0 0%, #fee068 45%, #facc15 100%);
+    color: transparent;
+    transition: width 180ms ease;
+}
+
+.create-instance-actions {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+}
+
+.create-instance-actions button {
+    height: 38px;
+    padding: 0 16px;
+    border: 1px solid #22c55e;
+    border-radius: 5px;
+    background: #dcfce7;
+    color: #166534;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.create-instance-actions button:hover {
+    background: #bbf7d0;
+}
+
+.create-instance-actions button:disabled {
+    cursor: not-allowed;
+    opacity: 0.56;
+}
+
+@media (max-width: 780px) {
+    .create-instance-form {
+        grid-template-columns: 1fr;
+        width: min(460px, 100%);
+    }
+
+    .create-instance-form > label,
+    .create-instance-options,
+    .create-instance-queue,
+    .create-instance-progress-area,
+    .create-instance-actions {
+        grid-column: 1;
+    }
+
+    .create-instance-options {
+        grid-row: auto;
+    }
+}
+
+/* =================== Instance Window =================== */
+
+.instance-window-body {
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #f5f7fb;
+}
+
+.instance-window-body.bake-has-background {
+    background: #f8fafc;
+}
+
+.instance-window-shell {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 190px 1fr;
+    min-height: 0;
+}
+
+.instance-window-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-sizing: border-box;
+    padding: 18px 12px;
+    border-right: 1px solid #cbd5e1;
+    background: rgba(226, 232, 240, 0.94);
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+}
+
+.instance-window-title {
+    display: grid;
+    gap: 4px;
+    margin-bottom: 10px;
+    padding: 0 6px 10px;
+    border-bottom: 1px solid #cbd5e1;
+}
+
+.instance-window-title span {
+    color: #0f172a;
+    font-size: 18px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.instance-window-title small {
+    color: #64748b;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+.instance-window-tab {
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid #b8c2d1;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #334155;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.instance-window-tab:hover {
+    background: #f8fafc;
+}
+
+.instance-window-tab.active {
+    border-color: #2f3542;
+    background: #2f3542;
+    color: #ffffff;
+}
+
+.instance-window-content {
+    position: relative;
+    box-sizing: border-box;
+    min-width: 0;
+    min-height: 0;
+    padding: 26px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+}
+
+.instance-window-status {
+    min-height: 20px;
+    margin-bottom: 10px;
+    color: #475569;
+    font-size: 14px;
+}
+
+.instance-widget-box {
+    display: none;
+    width: 100%;
+    max-width: none;
+    container-type: inline-size;
+}
+
+.instance-widget-box.active {
+    display: block;
+}
+
+.instance-widget-box h1 {
+    margin-bottom: 18px;
+    font-size: 32px;
+}
+
+.instance-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 12px;
+}
+
+.instance-detail-item {
+    display: grid;
+    gap: 6px;
+    min-height: 78px;
+    box-sizing: border-box;
+    padding: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.instance-detail-item span {
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.instance-detail-item strong {
+    color: #0f172a;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+.instance-icon-editor {
+    display: grid;
+    grid-template-columns: minmax(140px, 180px) minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+    width: 100%;
+}
+
+.instance-icon-preview {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+}
+
+.instance-icon-editor-preview-icon {
+    width: 96px;
+    border-radius: 22px;
+}
+
+.instance-icon-controls {
+    display: grid;
+    gap: 12px;
+}
+
+.instance-icon-upload {
+    display: grid;
+    gap: 7px;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.instance-icon-upload input {
+    min-width: 0;
+    box-sizing: border-box;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #0f172a;
+    font: inherit;
+    font-size: 14px;
+}
+
+.instance-icon-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.instance-icon-actions button {
+    height: 38px;
+    padding: 0 14px;
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #1e293b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.instance-icon-actions button:hover {
+    background: #f1f5f9;
+}
+
+.instance-client-panel {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+}
+
+.instance-client-panel .instance-settings-form {
+    gap: 12px;
+}
+
+.instance-settings-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.instance-client-panel .instance-settings-row {
+    grid-template-columns: minmax(92px, 130px) minmax(0, 1fr);
+}
+
+.instance-settings-row input[readonly].missing-value {
+    border-color: #fca5a5;
+    background: #fef2f2;
+    color: #991b1b;
+}
+
+.instance-classpath-panel {
+    display: grid;
+    gap: 8px;
+}
+
+.instance-classpath-list {
+    display: grid;
+    gap: 7px;
+    max-height: min(300px, calc(100vh - 330px));
+    min-height: 160px;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding-right: 4px;
+}
+
+.instance-classpath-item {
+    display: grid;
+    gap: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 9px 11px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #0f172a;
+    cursor: context-menu;
+    font: inherit;
+    text-align: left;
+}
+
+.instance-classpath-item:hover {
+    background: #f8fafc;
+}
+
+.instance-classpath-item.disabled-classpath {
+    background: #f8fafc;
+    color: #64748b;
+}
+
+.instance-classpath-item.missing-classpath {
+    border-color: #fca5a5;
+    background: #fef2f2;
+}
+
+.instance-classpath-item strong,
+.instance-classpath-item small {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+.instance-classpath-item strong {
+    font-size: 13px;
+}
+
+.instance-classpath-item span {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.instance-classpath-item small {
+    color: #64748b;
+    font-size: 11px;
+}
+
+.instance-mod-manager {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(190px, 210px);
+    gap: 16px;
+    align-items: start;
+    width: 100%;
+    min-width: 0;
+}
+
+.instance-mod-list-panel {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+}
+
+.instance-mod-list-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.instance-mod-list-header strong {
+    color: #0f172a;
+    font-size: 15px;
+}
+
+.instance-mod-list-header span {
+    min-width: 0;
+    color: #64748b;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.instance-mod-drop-zone {
+    display: grid;
+    gap: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 82px;
+    padding: 14px;
+    border: 1px dashed #94a3b8;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #334155;
+    align-content: center;
+    transition: background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.instance-mod-drop-zone.drag-over {
+    border-color: #22c55e;
+    background: #dcfce7;
+    box-shadow: inset 0 0 0 1px #22c55e;
+}
+
+.instance-mod-drop-zone strong {
+    color: #0f172a;
+    font-size: 15px;
+}
+
+.instance-mod-drop-zone span {
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.instance-mod-list {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: min(360px, calc(100vh - 300px));
+    min-height: 210px;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: auto;
+    padding-right: 0;
+}
+
+.instance-mod-item {
+    display: grid;
+    gap: 5px;
+    width: 100%;
+    min-height: 58px;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #0f172a;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+    transition: background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.instance-mod-item:hover {
+    background: #f8fafc;
+}
+
+.instance-mod-item.selected {
+    border-color: #2f3542;
+    box-shadow: inset 0 0 0 1px #2f3542;
+}
+
+.instance-mod-item.disabled-mod {
+    background: #f8fafc;
+    color: #64748b;
+}
+
+.instance-mod-item strong {
+    min-width: 0;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.instance-mod-item span {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.instance-mod-empty {
+    box-sizing: border-box;
+    min-height: 58px;
+    margin: 0;
+    padding: 13px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.instance-mod-unavailable {
+    border-color: #fecaca;
+    background: #fef2f2;
+    color: #991b1b;
+    font-weight: 700;
+}
+
+.instance-mod-actions {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.instance-mod-browser-row,
+.instance-mod-browser-column {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    width: 100%;
+    min-width: 0;
+}
+
+.instance-mod-browser-column span {
+    min-height: 16px;
+}
+
+.instance-mod-browser-column input,
+.instance-mod-browser-column select {
+    width: 100%;
+}
+
+.instance-mod-actions button {
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #1e293b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.instance-mod-actions button:hover {
+    background: #f1f5f9;
+}
+
+.instance-mod-actions button:disabled,
+.instance-mod-browser-row select:disabled,
+.instance-mod-browser-column select:disabled {
+    cursor: not-allowed;
+    opacity: 0.56;
+}
+
+.instance-library-manager {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(190px, 210px);
+    gap: 16px;
+    align-items: start;
+    width: 100%;
+    min-width: 0;
+}
+
+.instance-library-list-panel {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    border: none;
+}
+
+.instance-library-list-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.instance-library-list-header strong {
+    color: #0f172a;
+    font-size: 15px;
+}
+
+.instance-library-list-header span {
+    min-width: 0;
+    color: #64748b;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.instance-library-list {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: min(470px, calc(100vh - 190px));
+    min-height: 260px;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: auto;
+}
+
+.instance-library-item {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 11px;
+    align-items: center;
+    width: 100%;
+    min-height: 70px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #0f172a;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+    transition: background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.instance-library-item:hover {
+    background: #f8fafc;
+}
+
+.instance-library-item.selected {
+    border-color: #2f3542;
+    box-shadow: inset 0 0 0 1px #2f3542;
+}
+
+.instance-library-icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #e2e8f0;
+    color: #475569;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.instance-library-icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.instance-library-summary {
+    display: grid;
+    gap: 5px;
+    min-width: 0;
+}
+
+.instance-library-summary strong {
+    min-width: 0;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+.instance-library-summary span {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.instance-library-actions {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.instance-library-actions button {
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #1e293b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.instance-library-actions button:hover {
+    background: #f1f5f9;
+}
+
+.instance-library-actions button:disabled {
+    cursor: not-allowed;
+    opacity: 0.56;
+}
+
+@media (max-width: 760px) {
+    .instance-mod-manager {
+        grid-template-columns: 1fr;
+    }
+
+    .instance-library-manager {
+        grid-template-columns: 1fr;
+    }
+
+    .instance-mod-actions {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        align-items: end;
+    }
+
+    .instance-library-actions {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        align-items: end;
+    }
+
+    .instance-mod-browser-row,
+    .instance-mod-browser-column {
+        grid-column: span 1;
+    }
+}
+
+@container (max-width: 620px) {
+    .instance-mod-manager {
+        grid-template-columns: 1fr;
+    }
+
+    .instance-library-manager {
+        grid-template-columns: 1fr;
+    }
+
+    .instance-mod-actions {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        align-items: end;
+    }
+
+    .instance-library-actions {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        align-items: end;
+    }
+
+    .instance-mod-actions button {
+        align-self: end;
+    }
+
+    .instance-mod-browser-row,
+    .instance-mod-browser-column {
+        align-self: end;
+    }
+}
+
+.instance-settings-form {
+    display: grid;
+    gap: 14px;
+    width: 100%;
+}
+
+.instance-settings-grid {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+}
+
+.instance-settings-row {
+    display: grid;
+    grid-template-columns: minmax(130px, 190px) 1fr;
+    gap: 12px;
+    align-items: center;
+}
+
+.instance-settings-column span,
+.instance-settings-row span {
+    color: #334155;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.instance-settings-column input,
+.instance-settings-column select,
+.instance-settings-column textarea,
+.instance-settings-row input,
+.instance-settings-row select,
+.instance-settings-row textarea {
+    min-width: 0;
+    box-sizing: border-box;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #0f172a;
+    font: inherit;
+    font-size: 14px;
+}
+
+.instance-settings-column input,
+.instance-settings-column select,
+.instance-settings-row input,
+.instance-settings-row select {
+    height: 36px;
+    padding: 0 10px;
+}
+
+.instance-settings-column textarea,
+.instance-settings-row textarea {
+    min-height: 82px;
+    padding: 9px 10px;
+    resize: vertical;
+    line-height: 1.45;
+}
+
+.instance-settings-column input[readonly],
+.instance-settings-row textarea[readonly] {
+    background: #f8fafc;
+    color: #64748b;
+}
+
+.instance-settings-column input:focus,
+.instance-settings-column select:focus,
+.instance-settings-column textarea:focus,
+.instance-settings-row input:focus,
+.instance-settings-row select:focus,
+.instance-settings-row textarea:focus {
+    outline: 2px solid #94a3b8;
+    outline-offset: 1px;
+}
+
+.instance-settings-row.textarea-row {
+    align-items: start;
+}
+
+.instance-jvm-picker {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: end;
+}
+
+.instance-window-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.instance-launch-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0;
+}
+
+.instance-window-actions button,
+.instance-launch-button,
+.instance-log-button {
+    height: 38px;
+    padding: 0 16px;
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #1e293b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.instance-window-actions button:hover,
+.instance-launch-button:hover,
+.instance-log-button:hover {
+    background: #f1f5f9;
+}
+
+.instance-launch-button {
+    border-color: #22c55e;
+    background: #dcfce7;
+    color: #166534;
+}
+
+.instance-launch-button:hover {
+    background: #bbf7d0;
+}
+
+.instance-log-widget {
+    display: grid;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.instance-log-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 24px;
+}
+
+.instance-log-header strong {
+    color: #0f172a;
+    font-size: 15px;
+}
+
+.instance-log-header span {
+    min-width: 0;
+    color: #64748b;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.instance-log-output {
+    width: 100%;
+    height: min(340px, calc(100vh - 260px));
+    min-height: 220px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 12px;
+    overflow: auto;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    background: #111827;
+    color: #d1d5db;
+    font-family: Consolas, "Cascadia Mono", "Courier New", monospace;
+    font-size: 12px;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    cursor: text;
+    user-select: text;
+    -webkit-user-select: text;
+}
+
+.instance-log-output * {
+    user-select: text;
+    -webkit-user-select: text;
+}
+
+.log-context-menu {
+    position: fixed;
+    z-index: 100;
+    min-width: 120px;
+    padding: 6px;
+    border: 1px solid #94a3b8;
+    border-radius: 6px;
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18);
+}
+
+.log-context-menu[hidden] {
+    display: none;
+}
+
+.log-context-menu button {
+    width: 100%;
+    height: 32px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: #1e293b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    text-align: left;
+}
+
+.log-context-menu button:hover {
+    background: #e2e8f0;
+}
+
+.instance-log-line.error {
+    display: inline;
+    padding: 1px 3px;
+    border-radius: 4px;
+    background: #7f1d1d;
+    color: #fecaca;
+    font-weight: 700;
+}
+
+/* =================== Accounts =================== */
+
+.account-panel {
+    width: min(880px, 100%);
+    margin-top: 24px;
+}
+
+.account-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.account-panel-header h2 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    letter-spacing: 0;
+}
+
+.account-panel-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #64748b;
+    overflow-wrap: anywhere;
+}
+
+.account-create-form {
+    display: flex;
+    align-items: end;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.account-create-form label {
+    display: grid;
+    gap: 5px;
+    min-width: min(320px, 100%);
+    font-size: 13px;
+    color: #334155;
+}
+
+.account-create-form input {
+    height: 36px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #0f172a;
+    font: inherit;
+}
+
+.account-refresh-button,
+.account-login-button,
+.account-create-form button,
+.account-actions button,
+.account-danger-button {
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #1e293b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+}
+
+.account-refresh-button:hover,
+.account-login-button:hover,
+.account-create-form button:hover,
+.account-actions button:hover {
+    background: #f1f5f9;
+}
+
+.account-status {
+    min-height: 20px;
+    margin-bottom: 10px;
+    color: #475569;
+    font-size: 14px;
+}
+
+.account-login-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-top: 10px;
+}
+
+.account-login-button {
+    border-color: #38bdf8;
+    background: #e0f2fe;
+    color: #075985;
+}
+
+.account-login-button:hover {
+    background: #bae6fd;
+}
+
+.account-list {
+    display: grid;
+    gap: 10px;
+    max-height: calc(100vh - 330px);
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding-right: 4px;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.account-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    aspect-ratio: 1 / 1;
+}
+
+.account-summary {
+    min-width: 0;
+    margin-right: auto;
+}
+
+.account-summary h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    letter-spacing: 0;
+}
+
+.account-summary p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.account-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+}
+
+.account-current-badge {
+    padding: 7px 10px;
+    border-radius: 5px;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.account-delete-button,
+.account-danger-button {
+    border-color: #fecaca;
+    color: #991b1b;
+}
+
+.account-delete-button:hover,
+.account-danger-button:hover {
+    background: #fef2f2;
+}
+
+.account-empty {
+    color: #64748b;
+}
+
+/* =================== Settings =================== */
+
+.settings-panel {
+    width: min(820px, 100%);
+    margin-top: 24px;
+}
+
+.settings-switcher {
+    display: inline-flex;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 5px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+.settings-switch-button {
+    height: 34px;
+    padding: 0 13px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background: transparent;
+    color: #475569;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.settings-switch-button:hover {
+    background: #ffffff;
+    border-color: #cbd5e1;
+}
+
+.settings-switch-button.active {
+    background: #2f3542;
+    border-color: #2f3542;
+    color: #ffffff;
+}
+
+.settings-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.settings-panel-header h2 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    letter-spacing: 0;
+}
+
+.settings-panel-header p {
+    margin: 0;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.settings-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.settings-save-status {
+    min-width: 64px;
+    color: #64748b;
+    font-size: 13px;
+    text-align: right;
+}
+
+.settings-save-button,
+.settings-refresh-button {
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #1e293b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+}
+
+.settings-save-button:hover,
+.settings-refresh-button:hover {
+    background: #f1f5f9;
+}
+
+.settings-list {
+    max-height: calc(100vh - 250px);
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding-right: 4px;
+}
+
+.settings-list.hidden {
+    display: none;
+}
+
+.settings-section {
+    margin-bottom: 16px;
+    padding: 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.settings-section h3 {
+    margin: 0 0 12px;
+    font-size: 17px;
+    letter-spacing: 0;
+}
+
+.settings-group {
+    display: grid;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #f8fafc;
+}
+
+.settings-row {
+    display: grid;
+    grid-template-columns: minmax(120px, 180px) 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    background: transparent;
+    border-radius: 0;
+}
+
+.settings-row:last-child {
+    border-bottom: 0;
+}
+
+body.bake-theme-black .settings-row {
+    border-bottom-color: #2f2f35;
+}
+
+body.bake-has-background .settings-row,
+body.bake-theme-black.bake-has-background .settings-row {
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+.settings-key {
+    font-weight: 700;
+    color: #334155;
+    overflow-wrap: anywhere;
+}
+
+.settings-value {
+    min-width: 0;
+}
+
+.settings-input {
+    width: 100%;
+    min-height: 34px;
+    box-sizing: border-box;
+    padding: 7px 9px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #0f172a;
+    font: inherit;
+    font-size: 14px;
+}
+
+.settings-input:focus {
+    outline: 2px solid #94a3b8;
+    outline-offset: 1px;
+}
+
+.settings-file-input {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 8px;
+    align-items: center;
+}
+
+.settings-file-button {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #1e293b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.settings-file-button:hover {
+    background: #f1f5f9;
+}
+
+.settings-textarea {
+    min-height: 76px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.settings-empty {
+    color: #64748b;
+}
+
+.settings-tab-order-list,
+.settings-multi-select {
+    display: grid;
+    gap: 8px;
+}
+
+.settings-tab-order-item {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 8px;
+    align-items: center;
+}
+
+.settings-tab-order-item > span {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.settings-checkbox-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 8px;
+}
+
+.settings-checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 34px;
+    box-sizing: border-box;
+    padding: 7px 9px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #0f172a;
+    font-size: 14px;
+}
+
+.settings-checkbox-item input {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+}
+
+.settings-selected-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 28px;
+    align-items: center;
+}
+
+.settings-selected-item,
+.settings-selected-empty {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    box-sizing: border-box;
+    padding: 4px 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #334155;
+    font-size: 13px;
+}
+
+.settings-selected-empty {
+    color: #64748b;
+    background: #f8fafc;
+}
+
+.jvm-download-controls {
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) auto;
+    gap: 8px;
+    align-items: center;
+}
+
+.jvm-download-button,
+.jvm-actions button {
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #1e293b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.jvm-download-button {
+    border-color: #22c55e;
+    background: #dcfce7;
+    color: #166534;
+}
+
+.jvm-download-button:hover {
+    background: #bbf7d0;
+}
+
+.jvm-actions .jvm-check-button:hover {
+    background: #f1f5f9;
+}
+
+.jvm-registry-path {
+    margin: -4px 0 12px;
+    color: #64748b;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.jvm-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.jvm-list-header h3 {
+    margin-bottom: 0;
+}
+
+.jvm-check-all-button {
+    height: 34px;
+    padding: 0 13px;
+    border: 1px solid #38bdf8;
+    border-radius: 5px;
+    background: #e0f2fe;
+    color: #075985;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.jvm-check-all-button:hover {
+    background: #bae6fd;
+}
+
+.jvm-check-all-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.56;
+}
+
+.jvm-list {
+    display: grid;
+    gap: 9px;
+}
+
+.jvm-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+.jvm-summary {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+}
+
+.jvm-summary strong,
+.jvm-summary span,
+.jvm-summary small {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.jvm-summary strong {
+    color: #0f172a;
+    font-size: 15px;
+}
+
+.jvm-summary span,
+.jvm-summary small {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.jvm-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.jvm-actions .jvm-delete-button {
+    border-color: #fecaca;
+    background: #ffffff;
+    color: #991b1b;
+}
+
+.jvm-actions .jvm-delete-button:hover {
+    background: #fef2f2;
+}
+
+.jvm-readonly-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    box-sizing: border-box;
+    padding: 4px 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+@media (max-width: 640px) {
+    .settings-file-input {
+        grid-template-columns: 1fr;
+    }
+
+    .jvm-download-controls,
+    .jvm-item {
+        grid-template-columns: 1fr;
+    }
+
+    .jvm-list-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .jvm-actions {
+        justify-content: flex-start;
+    }
+}
+
+/* =================== Tab Bar =================== */
+
+.tab-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 5px;
+    box-sizing: border-box;
+    z-index: 10;
+    background-color: #d8dee9;
+    border: 1px solid #b8c2d1;
+    border-radius: 8px;
+    min-height: 64px;
+    padding: 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    user-select: none;
+    touch-action: pan-x;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
+}
+
+.tab-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-bar.sorting {
+    scroll-behavior: auto;
+}
+
+.tab-button {
+    min-width: 180px;
+    height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 18px;
+    border: 1px solid #b8c2d1;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #475569;
+    cursor: pointer;
+    font: inherit;
+    flex: 0 0 auto;
+    user-select: none;
+    touch-action: none;
+    transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease, transform 160ms ease;
+}
+
+.tab-button.dragging-tab {
+    cursor: grabbing;
+    opacity: 0.92;
+    transform: scale(1.03);
+    z-index: 5;
+    transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.tab-button:not(.dragging-tab) {
+    cursor: grab;
+}
+
+.tab-bar.sorting .tab-button:not(.dragging-tab) {
+    transition: transform 160ms ease, background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.tab-button:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+}
+
+.tab-button.active {
+    background: #2f3542;
+    border-color: #2f3542;
+    color: #ffffff;
+}
+
+.tab-button.hidden-tab {
+    display: none;
+}
+
+.tab-button.detached-tab {
+    border-style: dashed;
+    background: #edf2f7;
+    color: #64748b;
+}
+
+.tab-button.detached-tab.active {
+    background: #edf2f7;
+    border-color: #94a3b8;
+    color: #64748b;
+}
+
+.detached-window-body {
+    height: 100vh;
+    min-height: 100vh;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    background: #f5f7fb;
+}
+
+.system-window-dock-strip {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 12px 0 16px;
+    box-sizing: border-box;
+    background: #2f3542;
+    color: #ffffff;
+    cursor: grab;
+    user-select: none;
+}
+
+.system-window-dock-strip.dragging-dock-strip {
+    cursor: grabbing;
+    background: #3f4656;
+}
+
+.system-window-dock-strip span {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.system-window-dock-strip button {
+    height: 30px;
+    padding: 0 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #2f3542;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+}
+
+.detached-container {
+    box-sizing: border-box;
+    min-height: calc(100vh - 48px);
+    padding: 24px;
+}
+
+.tab-button > span:last-child {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+.tab-action-button {
+    min-width: 80px;
+    height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 0 16px;
+    border: 1px solid #22c55e;
+    border-radius: 5px;
+    background: #dcfce7;
+    color: #166534;
+    cursor: pointer;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    flex: 0 0 auto;
+}
+
+.tab-action-button:hover {
+    background: #bbf7d0;
+}
+
+.tab-action-plus {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    stroke: currentColor;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+}
+
+.tab-icon {
+    width: 26px;
+    height: 26px;
+    position: relative;
+    flex: 0 0 26px;
+}
+
+.tab-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.tab-icon-bookshelf {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+    padding: 2px;
+    box-sizing: border-box;
+    background: #7c4a24;
+    border: 2px solid #4b2e16;
+    border-radius: 2px;
+}
+
+.shelf {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+}
+
+.shelf span {
+    border-radius: 1px;
+    background: #facc15;
+    border-bottom: 2px solid #9a3412;
+}
+
+.shelf span:nth-child(2) {
+    background: #16a34a;
+}
+
+.shelf span:nth-child(3) {
+    background: #dc2626;
+}
+
+.tab-button.active .tab-icon-bookshelf {
+    border-color: #f8fafc;
+}
+
+.bake-error-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    padding: 24px;
+    background: rgba(15, 23, 42, 0.42);
+}
+
+.bake-error-widget {
+    display: grid;
+    gap: 14px;
+    width: min(460px, 100%);
+    box-sizing: border-box;
+    padding: 18px;
+    border: 1px solid #94a3b8;
+    border-radius: 8px;
+    background: rgba(248, 250, 252, 0.96);
+    box-shadow: 0 24px 64px rgba(15, 23, 42, 0.28);
+    color: #0f172a;
+}
+
+.bake-error-widget h2 {
+    margin: 0;
+    color: #991b1b;
+    font-size: 20px;
+    letter-spacing: 0;
+}
+
+.bake-message-widget h2 {
+    color: #0f766e;
+}
+
+.bake-error-message {
+    max-height: min(280px, 48vh);
+    margin: 0;
+    overflow: auto;
+    color: #334155;
+    font-family: Consolas, "Cascadia Mono", "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.bake-message-content {
+    display: grid;
+    gap: 8px;
+    color: #334155;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.bake-message-content p {
+    margin: 0;
+}
+
+.bake-error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.bake-error-close {
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    background: #ffffff;
+    color: #1e293b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.bake-error-close:hover {
+    background: #f1f5f9;
+}
+
+/* =================== Black Theme =================== */
+
+body.bake-theme-black {
+    color-scheme: dark;
+    background: #050505;
+    color: #e5e7eb;
+}
+
+body.bake-theme-black.bake-has-background {
+    background: #050505;
+}
+
+body.bake-theme-black h1,
+body.bake-theme-black h2,
+body.bake-theme-black h3,
+body.bake-theme-black p,
+body.bake-theme-black strong,
+body.bake-theme-black span,
+body.bake-theme-black label,
+body.bake-theme-black small,
+body.bake-theme-black .instance-window-title,
+body.bake-theme-black .settings-key {
+    color: #e5e7eb;
+}
+
+body.bake-theme-black a {
+    color: #7dd3fc;
+}
+
+body.bake-theme-black .instance-panel-header p,
+body.bake-theme-black .instance-status,
+body.bake-theme-black .instance-version,
+body.bake-theme-black .instance-meta,
+body.bake-theme-black .instance-empty,
+body.bake-theme-black .account-panel-header p,
+body.bake-theme-black .account-summary p,
+body.bake-theme-black .account-status,
+body.bake-theme-black .account-empty,
+body.bake-theme-black .settings-panel-header p,
+body.bake-theme-black .settings-save-status,
+body.bake-theme-black .settings-empty,
+body.bake-theme-black .jvm-registry-path,
+body.bake-theme-black .jvm-summary span,
+body.bake-theme-black .jvm-summary small,
+body.bake-theme-black .instance-window-status,
+body.bake-theme-black .instance-window-title small,
+body.bake-theme-black .instance-log-header span,
+body.bake-theme-black .instance-mod-list-header span,
+body.bake-theme-black .instance-library-list-header span,
+body.bake-theme-black .create-instance-queue-header p,
+body.bake-theme-black .create-instance-task-summary span,
+body.bake-theme-black .create-instance-task-summary small {
+    color: #a1a1aa;
+}
+
+body.bake-theme-black .status,
+body.bake-theme-black .instance-card,
+body.bake-theme-black .instance-context-menu,
+body.bake-theme-black .create-instance-options,
+body.bake-theme-black .create-instance-queue,
+body.bake-theme-black .create-instance-task-item,
+body.bake-theme-black .instance-window-sidebar,
+body.bake-theme-black .instance-detail-item,
+body.bake-theme-black .instance-classpath-item,
+body.bake-theme-black .instance-mod-item,
+body.bake-theme-black .instance-library-item,
+body.bake-theme-black .log-context-menu,
+body.bake-theme-black .account-item,
+body.bake-theme-black .settings-section,
+body.bake-theme-black .settings-group,
+body.bake-theme-black .settings-switcher,
+body.bake-theme-black .settings-checkbox-item,
+body.bake-theme-black .settings-selected-item,
+body.bake-theme-black .settings-selected-empty,
+body.bake-theme-black .settings-tab-order-item > span,
+body.bake-theme-black .jvm-item,
+body.bake-theme-black .jvm-readonly-badge,
+/* body.bake-theme-black .about-content, */
+body.bake-theme-black .tab-bar,
+body.bake-theme-black .bake-error-widget {
+    border-color: #2f2f35;
+    background: #111113;
+    color: #e5e7eb;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.36);
+}
+
+body.bake-theme-black.bake-has-background .status,
+body.bake-theme-black.bake-has-background .instance-card,
+body.bake-theme-black.bake-has-background .instance-context-menu,
+body.bake-theme-black.bake-has-background .create-instance-options,
+body.bake-theme-black.bake-has-background .create-instance-queue,
+body.bake-theme-black.bake-has-background .create-instance-task-item,
+body.bake-theme-black.bake-has-background .instance-window-sidebar,
+body.bake-theme-black.bake-has-background .instance-detail-item,
+body.bake-theme-black.bake-has-background .instance-classpath-item,
+body.bake-theme-black.bake-has-background .instance-mod-item,
+body.bake-theme-black.bake-has-background .instance-library-item,
+body.bake-theme-black.bake-has-background .log-context-menu,
+body.bake-theme-black.bake-has-background .account-item,
+body.bake-theme-black.bake-has-background .settings-section,
+body.bake-theme-black.bake-has-background .settings-group,
+body.bake-theme-black.bake-has-background .settings-switcher,
+body.bake-theme-black.bake-has-background .settings-checkbox-item,
+body.bake-theme-black.bake-has-background .settings-selected-item,
+body.bake-theme-black.bake-has-background .settings-selected-empty,
+body.bake-theme-black.bake-has-background .settings-tab-order-item > span,
+body.bake-theme-black.bake-has-background .jvm-item,
+body.bake-theme-black.bake-has-background .jvm-readonly-badge,
+body.bake-theme-black.bake-has-background .tab-bar {
+    border-color: rgba(82, 82, 91, 0.86);
+    background: rgba(17, 17, 19, var(--bake-background-surface-alpha, 0.72));
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.46);
+}
+
+body.bake-theme-black.bake-has-background h1,
+body.bake-theme-black.bake-has-background h2,
+body.bake-theme-black.bake-has-background h3,
+body.bake-theme-black.bake-has-background p,
+body.bake-theme-black.bake-has-background strong,
+body.bake-theme-black.bake-has-background span,
+body.bake-theme-black.bake-has-background label,
+body.bake-theme-black.bake-has-background small {
+    color: rgba(245, 245, 245, 0.94);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.72);
+}
+
+body.bake-theme-black button,
+body.bake-theme-black input,
+body.bake-theme-black select,
+body.bake-theme-black textarea,
+body.bake-theme-black .tab-button,
+body.bake-theme-black .tab-action-button,
+body.bake-theme-black .settings-file-button,
+body.bake-theme-black .settings-input,
+body.bake-theme-black .instance-name-input,
+body.bake-theme-black .instance-window-tab,
+body.bake-theme-black .instance-window-actions button,
+body.bake-theme-black .instance-log-button,
+body.bake-theme-black .instance-settings-row input,
+body.bake-theme-black .instance-settings-row select,
+body.bake-theme-black .instance-settings-row textarea,
+body.bake-theme-black .instance-icon-upload {
+    border-color: #3f3f46;
+    background: #18181b;
+    color: #f4f4f5;
+    box-shadow: none;
+}
+
+body.bake-theme-black button:hover,
+body.bake-theme-black .tab-button:hover,
+body.bake-theme-black .settings-file-button:hover,
+body.bake-theme-black .instance-window-actions button:hover,
+body.bake-theme-black .instance-log-button:hover,
+body.bake-theme-black .instance-context-menu button:hover,
+body.bake-theme-black .log-context-menu button:hover {
+    border-color: #52525b;
+    background: #27272a;
+}
+
+body.bake-theme-black input:focus,
+body.bake-theme-black select:focus,
+body.bake-theme-black textarea:focus,
+body.bake-theme-black .settings-input:focus,
+body.bake-theme-black .instance-name-input:not(:disabled):focus {
+    border-color: #71717a;
+    background: #18181b;
+    outline-color: #71717a;
+}
+
+body.bake-theme-black input::placeholder,
+body.bake-theme-black textarea::placeholder {
+    color: #71717a;
+}
+
+body.bake-theme-black .tab-button.active,
+body.bake-theme-black .settings-switch-button.active,
+body.bake-theme-black .instance-window-tab.active {
+    border-color: #f4f4f5;
+    background: #f4f4f5;
+    color: #09090b;
+}
+
+body.bake-theme-black .tab-button.active span,
+body.bake-theme-black .settings-switch-button.active,
+body.bake-theme-black .instance-window-tab.active {
+    color: #09090b;
+    text-shadow: none;
+}
+
+body.bake-theme-black .tab-button.detached-tab,
+body.bake-theme-black .tab-button.detached-tab.active,
+body.bake-theme-black .settings-selected-empty,
+body.bake-theme-black .create-instance-task-empty,
+body.bake-theme-black .instance-app-card:hover,
+body.bake-theme-black .instance-app-card:focus-visible,
+body.bake-theme-black .instance-name-input {
+    border-color: #3f3f46;
+    background: #18181b;
+    color: #d4d4d8;
+}
+
+body.bake-theme-black .instance-create-button,
+body.bake-theme-black .instance-launch-button,
+body.bake-theme-black .jvm-download-button,
+body.bake-theme-black .tab-action-button {
+    border-color: #22c55e;
+    background: #14532d;
+    color: #dcfce7;
+}
+
+body.bake-theme-black .instance-create-button:hover,
+body.bake-theme-black .instance-launch-button:hover,
+body.bake-theme-black .jvm-download-button:hover,
+body.bake-theme-black .tab-action-button:hover {
+    background: #166534;
+}
+
+body.bake-theme-black .account-login-button,
+body.bake-theme-black .jvm-check-all-button,
+body.bake-theme-black .create-instance-queue-header button {
+    border-color: #0ea5e9;
+    background: #075985;
+    color: #e0f2fe;
+}
+
+body.bake-theme-black .account-login-button:hover,
+body.bake-theme-black .jvm-check-all-button:hover,
+body.bake-theme-black .create-instance-queue-header button:hover {
+    background: #0369a1;
+}
+
+body.bake-theme-black .account-current-badge,
+body.bake-theme-black .create-instance-task-item.task-finished {
+    border-color: #166534;
+    background: #052e16;
+    color: #bbf7d0;
+}
+
+body.bake-theme-black .account-delete-button,
+body.bake-theme-black .account-danger-button,
+body.bake-theme-black .jvm-actions .jvm-delete-button,
+body.bake-theme-black .instance-context-menu .danger-menu-item {
+    border-color: #7f1d1d;
+    background: #18181b;
+    color: #fca5a5;
+}
+
+body.bake-theme-black .account-delete-button:hover,
+body.bake-theme-black .account-danger-button:hover,
+body.bake-theme-black .jvm-actions .jvm-delete-button:hover,
+body.bake-theme-black .instance-context-menu .danger-menu-item:hover,
+body.bake-theme-black .create-instance-task-item.task-failed {
+    border-color: #991b1b;
+    background: #450a0a;
+    color: #fecaca;
+}
+
+body.bake-theme-black.create-instance-window-body,
+body.bake-theme-black.detached-window-body,
+body.bake-theme-black.instance-window-body {
+    background: #050505;
+}
+
+body.bake-theme-black .instance-window-shell,
+body.bake-theme-black .instance-window-content,
+body.bake-theme-black .detached-container {
+    background: transparent;
+}
+
+body.bake-theme-black .system-window-dock-strip {
+    background: #09090b;
+    color: #f4f4f5;
+}
+
+body.bake-theme-black .system-window-dock-strip.dragging-dock-strip {
+    background: #18181b;
+}
+
+body.bake-theme-black .system-window-dock-strip button {
+    border-color: #3f3f46;
+    background: #18181b;
+    color: #f4f4f5;
+}
+
+body.bake-theme-black .instance-log-output {
+    border-color: #3f3f46;
+    background: #050505;
+    color: #d4d4d8;
+}
+
+body.bake-theme-black .instance-app-card {
+    color: #e5e7eb;
+}
+
+body.bake-theme-black .instance-app-name {
+    color: #e5e7eb;
+}
+
+body.bake-theme-black .instance-app-image-icon,
+body.bake-theme-black .create-instance-task-progress {
+    border-color: #3f3f46;
+    background: #27272a;
+}
+
+body.bake-theme-black .bake-error-overlay {
+    background: rgba(0, 0, 0, 0.66);
+}
+
+body.bake-theme-black .bake-error-widget h2 {
+    color: #fca5a5;
+}
+
+body.bake-theme-black .bake-message-widget h2 {
+    color: #5eead4;
+}
+
+.bake-warning-widget h2,
+body.bake-theme-black .bake-warning-widget h2 {
+    color: #ca8a04;
+}
+
+body.bake-theme-black .bake-error-message,
+body.bake-theme-black .bake-message-content {
+    color: #d4d4d8;
+}
+
+body.bake-theme-black .bake-error-close {
+    border-color: #3f3f46;
+    background: #18181b;
+    color: #f4f4f5;
+}
+
+body.bake-theme-black .bake-error-close:hover {
+    background: #27272a;
+}
+
+body.bake-theme-black.bake-has-background .status,
+body.bake-theme-black.bake-has-background .instance-card,
+body.bake-theme-black.bake-has-background .instance-context-menu,
+body.bake-theme-black.bake-has-background .create-instance-options,
+body.bake-theme-black.bake-has-background .create-instance-queue,
+body.bake-theme-black.bake-has-background .create-instance-task-item,
+body.bake-theme-black.bake-has-background .instance-window-sidebar,
+body.bake-theme-black.bake-has-background .instance-detail-item,
+body.bake-theme-black.bake-has-background .instance-classpath-item,
+body.bake-theme-black.bake-has-background .instance-mod-item,
+body.bake-theme-black.bake-has-background .instance-library-item,
+body.bake-theme-black.bake-has-background .log-context-menu,
+body.bake-theme-black.bake-has-background .account-item,
+body.bake-theme-black.bake-has-background .settings-section,
+body.bake-theme-black.bake-has-background .settings-group,
+body.bake-theme-black.bake-has-background .settings-switcher,
+body.bake-theme-black.bake-has-background .settings-checkbox-item,
+body.bake-theme-black.bake-has-background .settings-selected-item,
+body.bake-theme-black.bake-has-background .settings-selected-empty,
+body.bake-theme-black.bake-has-background .settings-tab-order-item > span,
+body.bake-theme-black.bake-has-background .jvm-item,
+body.bake-theme-black.bake-has-background .jvm-readonly-badge,
+body.bake-theme-black.bake-has-background .tab-bar,
+body.bake-theme-black.bake-has-background .bake-error-widget {
+    background: rgba(17, 17, 19, var(--bake-background-surface-alpha, 0.72));
+}
+
+body.bake-has-background .about-content,
+body.bake-theme-black.bake-has-background .about-content {
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+body.bake-theme-black.bake-has-background button,
+body.bake-theme-black.bake-has-background input,
+body.bake-theme-black.bake-has-background select,
+body.bake-theme-black.bake-has-background textarea,
+body.bake-theme-black.bake-has-background .tab-button,
+body.bake-theme-black.bake-has-background .settings-file-button,
+body.bake-theme-black.bake-has-background .settings-input,
+body.bake-theme-black.bake-has-background .instance-name-input,
+body.bake-theme-black.bake-has-background .instance-window-tab,
+body.bake-theme-black.bake-has-background .instance-window-actions button,
+body.bake-theme-black.bake-has-background .instance-log-button,
+body.bake-theme-black.bake-has-background .instance-settings-row input,
+body.bake-theme-black.bake-has-background .instance-settings-row select,
+body.bake-theme-black.bake-has-background .instance-settings-row textarea,
+body.bake-theme-black.bake-has-background .instance-icon-upload {
+    background: rgba(24, 24, 27, var(--bake-background-surface-alpha, 0.72));
+}
+
+body.bake-theme-black.bake-has-background button:hover,
+body.bake-theme-black.bake-has-background .tab-button:hover,
+body.bake-theme-black.bake-has-background .settings-file-button:hover,
+body.bake-theme-black.bake-has-background .instance-window-actions button:hover,
+body.bake-theme-black.bake-has-background .instance-log-button:hover,
+body.bake-theme-black.bake-has-background .instance-context-menu button:hover,
+body.bake-theme-black.bake-has-background .log-context-menu button:hover {
+    background: rgba(39, 39, 42, var(--bake-background-surface-alpha, 0.72));
+}
+
+body.bake-theme-black.bake-has-background .tab-button.active,
+body.bake-theme-black.bake-has-background .settings-switch-button.active,
+body.bake-theme-black.bake-has-background .instance-window-tab.active {
+    background: rgba(244, 244, 245, var(--bake-background-surface-alpha, 0.72));
+}
+
+body.bake-theme-black.bake-has-background .instance-create-button,
+body.bake-theme-black.bake-has-background .instance-launch-button,
+body.bake-theme-black.bake-has-background .jvm-download-button,
+body.bake-theme-black.bake-has-background .tab-action-button {
+    background: rgba(20, 83, 45, var(--bake-background-surface-alpha, 0.72));
+}
+
+body.bake-theme-black.bake-has-background .account-login-button,
+body.bake-theme-black.bake-has-background .jvm-check-all-button,
+body.bake-theme-black.bake-has-background .create-instance-queue-header button {
+    background: rgba(7, 89, 133, var(--bake-background-surface-alpha, 0.72));
+}
+
+body.bake-theme-black.bake-has-background .account-current-badge,
+body.bake-theme-black.bake-has-background .create-instance-task-item.task-finished {
+    background: rgba(5, 46, 22, var(--bake-background-surface-alpha, 0.72));
+}
+
+body.bake-theme-black.bake-has-background .account-delete-button,
+body.bake-theme-black.bake-has-background .account-danger-button,
+body.bake-theme-black.bake-has-background .jvm-actions .jvm-delete-button,
+body.bake-theme-black.bake-has-background .instance-context-menu .danger-menu-item,
+body.bake-theme-black.bake-has-background .create-instance-task-item.task-failed {
+    background: rgba(69, 10, 10, var(--bake-background-surface-alpha, 0.72));
+}

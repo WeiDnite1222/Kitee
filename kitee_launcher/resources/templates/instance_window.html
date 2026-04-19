@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Instance</title>
+    <style>
+        /* BK_STYLE */
+    </style>
+</head>
+<body class="instance-window-body">
+    <main class="instance-window-shell">
+        <aside class="instance-window-sidebar" aria-label="Instance sections">
+            <div class="instance-window-title">
+                <span id="instance_window_name">Instance</span>
+                <small id="instance_window_version">Loading...</small>
+            </div>
+            <button class="instance-window-tab active" type="button" data-instance-page="overview">Overview</button>
+            <button class="instance-window-tab" type="button" data-instance-page="launch">Launch</button>
+            <button class="instance-window-tab" type="button" data-instance-page="settings">Settings</button>
+            <button class="instance-window-tab" type="button" data-instance-page="client">Client</button>
+            <button class="instance-window-tab" type="button" data-instance-page="icon">Icon</button>
+            <button class="instance-window-tab" type="button" data-instance-page="mods">Mods</button>
+            <button class="instance-window-tab" type="button" data-instance-page="worlds">Worlds</button>
+            <button class="instance-window-tab" type="button" data-instance-page="resourcepacks">Resource Packs</button>
+            <button class="instance-window-tab" type="button" data-instance-page="jvm">JVM</button>
+        </aside>
+        <section class="instance-window-content">
+            <div class="instance-window-status" id="instance_window_status" aria-live="polite"></div>
+            <section class="instance-widget-box active" id="instance_page_overview">
+                <h1>Overview</h1>
+                <div class="instance-detail-grid" id="instance_overview_grid"></div>
+            </section>
+            <section class="instance-widget-box" id="instance_page_icon">
+                <h1>Icon</h1>
+                <section class="instance-icon-editor" aria-label="Instance icon editor">
+                    <div class="instance-icon-preview" id="instance_icon_preview"></div>
+                    <div class="instance-icon-controls">
+                        <label class="instance-icon-upload">
+                            <span>Upload image</span>
+                            <input type="file" id="instance_icon_file" accept="image/png,image/jpeg,image/webp">
+                        </label>
+                        <div class="instance-icon-actions">
+                            <button type="button" id="instance_icon_recommended">Use recommended</button>
+                            <button type="button" id="instance_icon_grass">Use grass</button>
+                            <button type="button" id="instance_icon_modded">Use modded grass</button>
+                            <button type="button" id="instance_icon_clear">Use letter icon</button>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section class="instance-widget-box" id="instance_page_client">
+                <h1>Client</h1>
+                <section class="instance-client-panel" aria-label="Client settings">
+                    <div class="instance-detail-grid" id="instance_client_versions"></div>
+                    <form class="instance-settings-form" id="instance_client_form">
+                        <label class="instance-settings-row">
+                            <span>Main class</span>
+                            <input type="text" id="instance_client_main_class" autocomplete="off" placeholder="net.minecraft.client.main.Main">
+                        </label>
+                        <label class="instance-settings-row">
+                            <span>Custom jar</span>
+                            <input type="text" id="instance_client_custom_jar" readonly placeholder="Default client jar">
+                        </label>
+                        <section class="instance-classpath-panel" aria-label="Client classpath">
+                            <div class="instance-log-header">
+                                <strong>Classpath</strong>
+                                <span id="instance_client_classpath_version"></span>
+                            </div>
+                            <div class="instance-classpath-list" id="instance_client_classpath_list" role="listbox" aria-label="Classpath items"></div>
+                        </section>
+                        <div class="instance-window-actions">
+                            <button type="button" id="instance_client_insert_classpath">Insert JAR File</button>
+                            <button type="button" id="instance_client_refresh">Refresh</button>
+                            <button type="submit">Save Client</button>
+                        </div>
+                    </form>
+                </section>
+            </section>
+            <section class="instance-widget-box" id="instance_page_mods">
+                <h1>Mods</h1>
+                <section class="instance-mod-manager" aria-label="Mod manager">
+                    <div class="instance-mod-list-panel">
+                        <div class="instance-mod-list-header">
+                            <strong>Installed mods</strong>
+                            <span id="instance_mods_path"></span>
+                        </div>
+                        <div class="instance-mod-drop-zone" id="instance_mod_drop_zone">
+                            <strong>Drop mod JAR files here</strong>
+                            <span>Use local .jar files. Modrinth and CurseForge download sources are reserved for later.</span>
+                        </div>
+                        <div class="instance-mod-list" id="instance_mods_list" role="listbox" aria-label="Installed mods"></div>
+                    </div>
+                    <aside class="instance-mod-actions" aria-label="Mod actions">
+                        <label class="instance-settings-column instance-mod-browser-column">
+                            <span>Mod loader</span>
+                            <select id="instance_mod_loader_select">
+                                <option value="fabric" class="option">Fabric</option>
+                                <option value="forge" class="option">Forge</option>
+                                <option value="neoforge" class="option">NeoForge</option>
+                            </select>
+                        </label>
+                        <label class="instance-settings-column instance-mod-browser-column">
+                            <span>Loader version</span>
+                            <input type="text" id="instance_mod_loader_version" autocomplete="off" placeholder="Latest stable">
+                        </label>
+                        <button type="button" id="instance_mod_install_loader">Install Mod Loader</button>
+                        <label class="instance-settings-column instance-mod-browser-column">
+                            <span>Import source</span>
+                            <select id="instance_mod_browser_menu">
+                                <option value="local" class="option">Local file...</option>
+                                <option value="modrinth" class="option" disabled>Modrinth</option>
+                                <option value="curseforge" class="option" disabled>CurseForge</option>
+                            </select>
+                        </label>
+                        <button type="button" id="instance_mod_add">Add</button>
+                        <button type="button" id="instance_mod_remove">Remove</button>
+                        <button type="button" id="instance_mod_toggle">Disable</button>
+                        <button type="button" id="instance_mod_refresh">Refresh</button>
+                    </aside>
+                </section>
+            </section>
+            <section class="instance-widget-box" id="instance_page_worlds">
+                <h1>Worlds</h1>
+                <section class="instance-library-manager" aria-label="World manager">
+                    <div class="instance-library-list-panel">
+                        <div class="instance-library-list-header">
+                            <strong>Available worlds</strong>
+                            <span id="instance_worlds_path"></span>
+                        </div>
+                        <div class="instance-library-list" id="instance_worlds_list" role="listbox" aria-label="Available worlds"></div>
+                    </div>
+                    <aside class="instance-library-actions" aria-label="World actions">
+                        <button type="button" id="instance_world_import">Import World</button>
+                        <button type="button" id="instance_world_delete">Delete World</button>
+                        <button type="button" id="instance_world_refresh">Refresh</button>
+                    </aside>
+                </section>
+            </section>
+            <section class="instance-widget-box" id="instance_page_resourcepacks">
+                <h1>Resource Packs</h1>
+                <section class="instance-library-manager" aria-label="Resource pack manager">
+                    <div class="instance-library-list-panel">
+                        <div class="instance-library-list-header">
+                            <strong>Available resource packs</strong>
+                            <span id="instance_resource_packs_path"></span>
+                        </div>
+                        <div class="instance-library-list" id="instance_resource_packs_list" role="listbox" aria-label="Available resource packs"></div>
+                    </div>
+                    <aside class="instance-library-actions" aria-label="Resource pack actions">
+                        <button type="button" id="instance_resource_pack_import">Import Resource Pack</button>
+                        <button type="button" id="instance_resource_pack_delete">Delete Resource Pack</button>
+                        <button type="button" id="instance_resource_pack_refresh">Refresh</button>
+                    </aside>
+                </section>
+            </section>
+            <section class="instance-widget-box" id="instance_page_settings">
+                <h1>Settings</h1>
+                <form class="instance-settings-form" id="instance_settings_form">
+                    <div class="instance-settings-grid" id="instance_settings_grid"></div>
+                    <div class="instance-window-actions">
+                        <button type="submit">Save</button>
+                        <button type="button" id="instance_settings_refresh">Refresh</button>
+                    </div>
+                </form>
+            </section>
+            <section class="instance-widget-box" id="instance_page_jvm">
+                <h1>JVM</h1>
+                <form class="instance-settings-form" id="instance_jvm_form">
+                    <div class="instance-jvm-picker">
+                        <label class="instance-settings-row">
+                            <span>Java runtime</span>
+                            <select id="instance_jvm_runtime_select">
+                                <option value="">Auto / PATH</option>
+                            </select>
+                        </label>
+                        <button class="instance-log-button" type="button" id="instance_jvm_refresh_list">Refresh JVMs</button>
+                    </div>
+                    <div class="instance-settings-grid">
+                        <label class="instance-settings-row">
+                            <span>Support Java</span>
+                            <input type="text" id="instance_jvm_support_version" autocomplete="off" placeholder="17">
+                        </label>
+                        <label class="instance-settings-row">
+                            <span>Java executable</span>
+                            <input type="text" id="instance_jvm_executable" autocomplete="off" placeholder="Auto">
+                        </label>
+                        <label class="instance-settings-row">
+                            <span>Memory JVM args</span>
+                            <input type="text" id="instance_jvm_memory_args" autocomplete="off" placeholder="-Xms2048m -Xmx4096m">
+                        </label>
+                        <label class="instance-settings-row textarea-row">
+                            <span>Custom JVM args</span>
+                            <textarea id="instance_jvm_custom_args" rows="4" placeholder="-XX:+UnlockExperimentalVMOptions"></textarea>
+                        </label>
+                        <label class="instance-settings-row textarea-row">
+                            <span>Mod loader JVM args</span>
+                            <textarea id="instance_jvm_modloader_args" rows="3" readonly></textarea>
+                        </label>
+                    </div>
+                    <div class="instance-window-actions">
+                        <button type="submit">Save JVM</button>
+                        <button type="button" id="instance_jvm_refresh_settings">Refresh</button>
+                    </div>
+                </form>
+            </section>
+            <section class="instance-widget-box" id="instance_page_launch">
+                <h1>Launch</h1>
+                <p>Start this instance with the current launcher account and local game files.</p>
+                <section class="instance-log-widget" aria-label="Launch log">
+                    <div class="instance-log-header">
+                        <strong>Log</strong>
+                        <span id="instance_log_path">Waiting for launch...</span>
+                    </div>
+                    <pre class="instance-log-output" id="instance_log_output" aria-live="polite"></pre>
+                </section>
+                <div class="instance-launch-actions">
+                    <button class="instance-launch-button" type="button" id="instance_launch_button">Launch</button>
+                    <button class="instance-log-button" type="button" id="instance_log_copy">Copy log</button>
+                    <button class="instance-log-button" type="button" id="instance_log_refresh">Refresh log</button>
+                    <button class="instance-log-button" type="button" id="instance_log_clear_view">Clear view</button>
+                </div>
+            </section>
+        </section>
+    </main>
+    <div class="log-context-menu" id="instance_log_context_menu" role="menu" hidden>
+        <button type="button" role="menuitem" id="instance_log_context_copy">Copy</button>
+    </div>
+    <div class="log-context-menu" id="instance_classpath_context_menu" role="menu" hidden>
+        <button type="button" role="menuitem" id="instance_classpath_context_toggle">Disable</button>
+    </div>
+    <script>
+    /* BK_I18N */
+    </script>
+    <script>
+    /* BK_SHARED_JS */
+    </script>
+    <script>
+    /* BK_INSTANCE_JS */
+    </script>
+</body>
+</html>

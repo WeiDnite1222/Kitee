@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create Instance</title>
+    <style>
+        /* BK_STYLE */
+    </style>
+</head>
+<body class="create-instance-window-body">
+    <main class="create-instance-window">
+        <h1>Create Instance</h1>
+        <form class="create-instance-form" id="create_instance_form">
+            <label>
+                <span>Instance name</span>
+                <input type="text" id="create_instance_name" autocomplete="off" placeholder="My Instance" required>
+            </label>
+            <label>
+                <span>Version type</span>
+                <select id="create_version_type">
+                    <option value="release">release</option>
+                    <option value="snapshot">snapshot</option>
+                    <option value="old_beta">old_beta</option>
+                    <option value="old_alpha">old_alpha</option>
+                    <option value="custom">custom</option>
+                </select>
+            </label>
+            <label>
+                <span>Minecraft version</span>
+                <select id="create_client_version" required>
+                    <option value="">Loading versions...</option>
+                </select>
+            </label>
+            <label>
+                <span>Mod loader</span>
+                <select id="create_mod_loader">
+                    <option value="none">None</option>
+                    <option value="fabric">Fabric</option>
+                    <option value="forge">Forge</option>
+                    <option value="neoforge">NeoForge</option>
+                </select>
+            </label>
+            <fieldset class="create-instance-options">
+                <legend>Other parameters</legend>
+                <label id="create_mod_loader_version_label">
+                    <span>Loader version</span>
+                    <input type="text" id="create_mod_loader_version" autocomplete="off" placeholder="Latest stable">
+                </label>
+                <label>
+                    <span>Custom Java version</span>
+                    <input type="text" id="create_java_major_version" autocomplete="off" placeholder="17">
+                </label>
+                <label>
+                    <span>Main class</span>
+                    <input type="text" id="create_main_class" autocomplete="off" placeholder="net.minecraft.client.main.Main">
+                </label>
+                <label class="create-instance-check">
+                    <input type="checkbox" id="create_skip_game_files">
+                    <span>Don't download game file</span>
+                </label>
+                <label class="create-instance-check">
+                    <input type="checkbox" id="create_skip_java_download">
+                    <span>Don't download Java</span>
+                </label>
+            </fieldset>
+            <section class="create-instance-queue" aria-label="Pending instances">
+                <div class="create-instance-queue-header">
+                    <div>
+                        <h2>Pending instances</h2>
+                        <p>Add each instance to the list, then start them together.</p>
+                    </div>
+                    <button type="button" id="create_instance_add_task">Add task</button>
+                </div>
+                <div class="create-instance-task-list" id="create_instance_task_list"></div>
+            </section>
+            <div class="create-instance-progress-area">
+                <div class="create-instance-status" id="create_instance_status" aria-live="polite"></div>
+                <div class="create-instance-progress" id="create_instance_progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <span id="create_instance_progress_fill"></span>
+                </div>
+            </div>
+            <div class="create-instance-actions">
+                <button type="submit" id="create_instance_submit">Create</button>
+            </div>
+        </form>
+    </main>
+    <script>
+    /* BK_I18N */
+    </script>
+    <script>
+    /* BK_SHARED_JS */
+    </script>
+    <script>
+    /* BK_INSTANCE_CREATOR_JS */
+    </script>
+</body>
+</html>
