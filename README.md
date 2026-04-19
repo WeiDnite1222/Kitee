@@ -15,5 +15,6 @@ Make sure you have installed `uv` before you do the process below.
 
 # Credits
 
-* [BakeLauncher](https://github.com/Techarerm/BakeLauncher) : Original launcher source code.
-* [BakeCore](https://github.com/Techarerm/libs) : Original launcher library.
+* [BakeLauncher](https://github.com/Techarerm/BakeLauncher)  GPL-3.0 license (Original launcher source code)
+* [BakeCore](https://github.com/Techarerm/libs) : Unknown license (Original launcher library)
+* [pywebview](https://github.com/r0x0r/pywebview/) : BSD-3-Clause license
