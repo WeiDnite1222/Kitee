@@ -1,0 +1,155 @@
+name: Build Dev Version
+
+on:
+  push:
+    branches:
+      - dev
+    paths:
+      - '.github/workflows/dev-1.0.yml'
+      - 'build.py'
+      - 'build.sh'
+      - 'pyproject.toml'
+      - 'kitee_launcher/**'
+  pull_request:
+    branches:
+      - dev
+    paths:
+      - '.github/workflows/dev-1.0.yml'
+      - 'build.py'
+      - 'build.sh'
+      - 'pyproject.toml'
+      - 'kitee_launcher/**'
+
+permissions:
+  contents: write
+
+jobs:
+  windows-build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Build Kitee for Windows
+        run: |
+          python build.py --onefile
+
+      - name: Upload EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: Kitee-1.0-dev.Windows
+          path: dist/
+
+  macos-arm64e-build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Build Kitee for macOS
+        run: |
+          python build.py --onefile
+
+      - name: Upload APP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Kitee-1.0-dev.macOS.arm64e
+          path: dist/
+
+  macos-x64-build:
+    runs-on: macos-13
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Build Kitee for macOS
+        run: |
+          python build.py --onefile
+
+      - name: Upload APP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Kitee-1.0-dev.macOS.x64
+          path: dist/
+
+  linux-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+
+      - name: Build Kitee for Linux
+        run: |
+          python build.py --onefile
+
+      - name: Upload Linux binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: Kitee-1.0-dev.Linux
+          path: dist/
+
+  create-latest-tag:
+    runs-on: ubuntu-latest
+    needs: [windows-build, macos-arm64e-build, macos-x64-build, linux-build]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+      - name: Create and push 'Latest' tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git tag -f Latest
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} Latest --force
+
+
