@@ -76,6 +76,11 @@ class NuitkaBuildConfig:
                 f"--windows-icon-from-ico={self.icon_file}",
             ])
 
+        if self.system == "Darwin":
+            args.extend([
+                "-mode=app"
+            ])
+
         # Onefile mode (creates single executable)
         if onefile:
             args.append("--onefile")
