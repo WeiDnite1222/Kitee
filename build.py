@@ -61,7 +61,6 @@ class NuitkaBuildConfig:
         # Include data files
         args.extend([
             f"--include-data-dir={self.resources_dir}=resources",
-            f"--include-data-dir={self.bk_core_dir}/textures=bk_core/textures",
         ])
 
         # Output settings
