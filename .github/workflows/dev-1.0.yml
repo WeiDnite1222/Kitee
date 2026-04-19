@@ -1,4 +1,4 @@
-name: Build Dev Version
+name: Build Development Launcher
 
 on:
   workflow_dispatch:
