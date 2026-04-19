@@ -47,13 +47,17 @@ jobs:
 
       - name: Build Kitee for Windows
         run: |
-          python build.py --onefile
+          python build.py
 
-      - name: Upload EXE
+      - name: Compress Windows build
+        run: |
+          Compress-Archive -Path build\Kitee -DestinationPath Kitee-1.0-dev.Windows.zip
+
+      - name: Upload ZIP
         uses: actions/upload-artifact@v4
         with:
           name: Kitee-1.0-dev.Windows
-          path: dist/
+          path: Kitee-1.0-dev.Windows.zip
 
   macos-arm64e-build:
     runs-on: macos-latest
@@ -77,13 +81,17 @@ jobs:
 
       - name: Build Kitee for macOS
         run: |
-          python build.py --onefile
+          python build.py
 
-      - name: Upload APP
+      - name: Compress macOS ARM64 build
+        run: |
+          cd build && zip -r ../Kitee-1.0-dev.macOS.arm64e.zip Kitee
+
+      - name: Upload ZIP
         uses: actions/upload-artifact@v4
         with:
           name: Kitee-1.0-dev.macOS.arm64e
-          path: dist/
+          path: Kitee-1.0-dev.macOS.arm64e.zip
 
   macos-x64-build:
     runs-on: macos-13
@@ -107,13 +115,17 @@ jobs:
 
       - name: Build Kitee for macOS
         run: |
-          python build.py --onefile
+          python build.py
 
-      - name: Upload APP
+      - name: Compress macOS x64 build
+        run: |
+          cd build && zip -r ../Kitee-1.0-dev.macOS.x64.zip Kitee
+
+      - name: Upload ZIP
         uses: actions/upload-artifact@v4
         with:
           name: Kitee-1.0-dev.macOS.x64
-          path: dist/
+          path: Kitee-1.0-dev.macOS.x64.zip
 
   linux-build:
     runs-on: ubuntu-latest
@@ -142,13 +154,17 @@ jobs:
 
       - name: Build Kitee for Linux
         run: |
-          python build.py --onefile
+          python build.py
 
-      - name: Upload Linux binary
+      - name: Compress Linux build
+        run: |
+          cd build && zip -r ../Kitee-1.0-dev.Linux.zip Kitee
+
+      - name: Upload ZIP
         uses: actions/upload-artifact@v4
         with:
           name: Kitee-1.0-dev.Linux
-          path: dist/
+          path: Kitee-1.0-dev.Linux.zip
 
   create-latest-tag:
     runs-on: ubuntu-latest
