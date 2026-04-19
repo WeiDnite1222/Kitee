@@ -18,7 +18,7 @@ class NuitkaBuildConfig:
         self.script_dir = Path(__file__).resolve().parent
         self.kitee_dir = self.script_dir / "kitee_launcher"
         self.main_file = self.kitee_dir / "main.py"
-        self.icon_file = self.kitee_dir / "bk_core" / "textures" / "Bread.ico"
+        self.icon_file = self.kitee_dir / "resources" / "icons" / "icon.ico"
         self.resources_dir = self.kitee_dir / "resources"
         self.bk_core_dir = self.kitee_dir / "bk_core"
         self.managers_dir = self.kitee_dir / "managers"
