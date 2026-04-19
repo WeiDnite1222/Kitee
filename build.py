@@ -55,7 +55,6 @@ class NuitkaBuildConfig:
             "--follow-imports",
             "--follow-import-to=kitee_launcher",
             "--include-package=kitee_launcher",
-            '--standalone'
         ]
 
         # Include data files
@@ -75,6 +74,11 @@ class NuitkaBuildConfig:
                 "--windows-console-mode=disable",
                 f"--windows-icon-from-ico={self.icon_file}",
                 "--assume-yes-for-downloads"
+            ])
+
+        if self.system != "Darwin":
+            args.extend([
+                '--standalone'
             ])
 
         if self.system == "Darwin":
