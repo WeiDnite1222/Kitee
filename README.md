@@ -3,7 +3,7 @@ A custom Minecraft launcher prototype (Forked from BakeLauncher)
 
 # How to use
 
-Make sure you have installed `uv` before you do the process below.
+Make sure you have installed `uv` before you do the below process .
 
 ##### Sync project with command: 
 
