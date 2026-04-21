@@ -144,6 +144,9 @@ class KiteeMainGUI:
         self.auto_reload = False
         self.renderer = None
 
+        if self.launcher.platform.lower() == "linux":
+            self.renderer = "gtk"
+
         # Settings
         self.settings_path = self.settings_dir / "gui" / "settings.toml"
         self.settings = KiteeGUIConfig(

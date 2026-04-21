@@ -9,6 +9,7 @@ Copyright (c) 2024~2025 Techarerm/TedKai
 """
 
 import os
+import platform
 import sys
 import argparse
 import logging
@@ -60,6 +61,9 @@ class KiteeLauncher:
 
         # Threads
         self.background = threading.Thread()
+
+        # Platform
+        self.platform = platform.system()
 
     def main(self):
         # Check work dir
