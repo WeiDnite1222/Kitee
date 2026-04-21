@@ -13,6 +13,11 @@ Make sure you have installed `uv` before you do the process below.
 
 `uv run -m kitee_launcher.main`
 
+# Build
+
+###### Requirements:
+
+
 # Credits
 
 * [BakeLauncher](https://github.com/Techarerm/BakeLauncher)  GPL-3.0 license (Original launcher source code)

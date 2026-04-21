@@ -4,5 +4,5 @@ version = "1.0"
 description = "A custom Minecraft launcher (Forked from BakeLauncher)"
 requires-python = ">=3.12, <3.13.0"
 dependencies = [
-    "pywebview[gtk]; sys_platform == 'linux'", "pywebview", "tomli-w", "requests", "nuitka==2.7.10"
+    "pywebview[gtk]; sys_platform == 'linux'", "pywebview; sys_platform != 'linux'", "tomli-w", "requests", "nuitka==2.7.10"
 ]
