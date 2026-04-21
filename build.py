@@ -5,7 +5,6 @@ Supports Windows (MSVC) and POSIX (GCC/Clang)
 """
 
 import argparse
-import os
 import platform
 import shutil
 import subprocess
@@ -71,7 +70,7 @@ class NuitkaBuildConfig:
         # Platform-specific settings
         if self.system == "Windows":
             args.extend([
-                "--windows-console-mode=disable",
+                # "--windows-console-mode=disable",
                 f"--windows-icon-from-ico={self.icon_file}",
                 "--assume-yes-for-downloads"
             ])
@@ -109,7 +108,7 @@ class NuitkaBuildConfig:
         nuitka_args = self.get_nuitka_args(output_name, onefile=onefile)
 
         print(f"\n{'='*60}")
-        print(f"BakeLauncher Build Configuration")
+        print(f"Kitee Build Configuration")
         print(f"{'='*60}")
         print(f"Platform: {self.system} ({self.machine})")
         print(f"Python: {sys.version}")
@@ -153,7 +152,7 @@ class NuitkaBuildConfig:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Build BakeLauncher with Nuitka",
+        description="Build Kitee with Nuitka",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:

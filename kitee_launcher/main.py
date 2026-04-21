@@ -15,10 +15,10 @@ import logging
 import threading
 from pathlib import Path
 
-from . import __version__ as LAUNCHER_VERSION
-from .bk_core import __version__ as BK_CORE_VERSION
-from .background import Background
-from .gui import KiteeMainGUI
+from kitee_launcher import __version__ as LAUNCHER_VERSION
+from kitee_launcher.bk_core import __version__ as BK_CORE_VERSION
+from kitee_launcher.background import Background
+from kitee_launcher.gui import KiteeMainGUI
 
 class KiteeLauncher:
     def __init__(self):
